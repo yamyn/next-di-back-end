@@ -3,25 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3013",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p 3013",
+    "lint": "next lint",
+    "db:reset": "prisma migrate reset",
+    "db:reset:dev": "prisma migrate reset",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:migrate:prod": "npx prisma migrate deploy",
+    "db:reset:force": "prisma migrate reset --force",
+    "db:generate": "prisma generate",
+    "db:format": "prisma format",
+    "db:migrate:create:empty": "prisma migrate dev --create-only"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "@prisma/client": "5.9.0",
+    "@radix-ui/react-icons": "1.3.0",
+    "@radix-ui/themes": "2.0.3",
+    "awilix": "10.0.1",
+    "class-transformer": "0.5.1",
+    "class-validator": "^0.14.1",
+    "next": "14.1.0",
+    "react": "18",
+    "react-dom": "18",
+    "server-only": "0.0.1"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.0"
+    "@types/node": "20",
+    "@types/react": "18",
+    "@types/react-dom": "18",
+    "autoprefixer": "10.0.1",
+    "eslint": "8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "8",
+    "prisma": "^5.9.0",
+    "tailwindcss": "3.3.0",
+    "typescript": "5"
   }
 }

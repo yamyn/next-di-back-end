@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+
 import { Inter } from "next/font/google";
+import '@radix-ui/themes/styles.css';
 import "./globals.css";
+
+import { Theme, ThemePanel } from '@radix-ui/themes';
+import ApiContainer from "@/modules/index";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +19,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  ApiContainer.cradle.user.ep.findMany().then((res) => {
+    console.log('res :>> ', res);
+  });
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" style={{ minHeight: '100vh' }}>
+      <body className={inter.className}>
+        <Theme
+          accentColor="blue"
+          appearance="dark"
+        >
+          {children}
+          <ThemePanel />
+        </Theme>
+      </body>
     </html>
   );
 }
